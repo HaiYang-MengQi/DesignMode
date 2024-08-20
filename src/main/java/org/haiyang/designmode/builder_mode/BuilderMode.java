@@ -2,31 +2,31 @@ package org.haiyang.designmode.builder_mode;
 
 import org.springframework.stereotype.Component;
 
-public class Computer {
+public class BuilderMode {
     private String cpu;
     private String ram;
 
-    private Computer(ComputerBuilder builder) {
+    private BuilderMode(BuilderModeBuilder builder) {
         this.cpu = builder.cpu;
         this.ram = builder.ram;
     }
 
-    public static class ComputerBuilder {
+    public static class BuilderModeBuilder {
         private String cpu;
         private String ram;
 
-        public ComputerBuilder setCpu(String cpu) {
+        public BuilderModeBuilder setCpu(String cpu) {
             this.cpu = cpu;
             return this;
         }
 
-        public ComputerBuilder setRam(String ram) {
+        public BuilderModeBuilder setRam(String ram) {
             this.ram = ram;
             return this;
         }
 
-        public Computer build() {
-            return new Computer(this);
+        public BuilderMode build() {
+            return new BuilderMode(this);
         }
     }
 
@@ -42,7 +42,7 @@ public class Computer {
 class Test {
     @org.junit.jupiter.api.Test
     public void test() {
-        Computer computer = new Computer.ComputerBuilder().setCpu("i9-13900ks").setRam("32GB").build();
-        System.out.println(computer);
+        BuilderMode builderMode = new BuilderMode.BuilderModeBuilder().setCpu("i9-13900ks").setRam("32GB").build();
+        System.out.println(builderMode);
     }
 }
